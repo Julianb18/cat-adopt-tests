@@ -3,9 +3,11 @@ import userEvent from "@testing-library/user-event";
 
 import { Filter } from "../Filter";
 
+// beforeEach(() => render(<Filter filters={{}} setFilters={() => {}} />));
+
 describe("Filter component", () => {
   test("should be able to change value of fav select", () => {
-    render(<Filter />);
+    render(<Filter filters={{}} setFilters={() => {}} />);
     const select = screen.getByLabelText(/favourite/i);
 
     expect(select.value).toBe("any");
@@ -18,7 +20,7 @@ describe("Filter component", () => {
   });
 
   test("should be able to change value of gender select", () => {
-    render(<Filter />);
+    render(<Filter filters={{}} setFilters={() => {}} />);
     const select = screen.getByLabelText(/gender/i);
 
     expect(select.value).toBe("any");
@@ -30,11 +32,3 @@ describe("Filter component", () => {
     expect(select.value).toBe("female");
   });
 });
-
-{
-  /* <select name="" id="">
-  <option value="any">Any</option>
-  <option value="favourite">Favourite</option>
-  <option value="not favourite">Not favourite</option>
-</select>; */
-}

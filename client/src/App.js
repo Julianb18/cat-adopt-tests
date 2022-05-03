@@ -1,12 +1,11 @@
 import "./App.css";
 
-import { CardWrapper } from "./components/CardWrapper/CardWrapper";
-import cats from "../src/components/mocks/cats.json";
+import { Pets } from "./components/Pets/Pets";
 
 function App() {
   return (
     <div className="App">
-      <CardWrapper cats={cats} />
+      <Pets />
     </div>
   );
 }
