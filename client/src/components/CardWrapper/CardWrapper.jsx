@@ -3,10 +3,16 @@ import "./CardWrapper.css";
 
 import { Card } from "../Card/Card";
 
-export const CardWrapper = ({ cats }) => {
+export const CardWrapper = ({ cats, setCats }) => {
+  const updateFavourite = (index, favoured) => {
+    const updatedCats = [...cats];
+    updatedCats[index].favoured = favoured;
+    setCats(updatedCats);
+  };
+
   return (
     <div className="pet-card-container">
-      {cats.map((cat) => {
+      {cats.map((cat, index) => {
         return (
           <Card
             key={cat.id}
@@ -15,6 +21,8 @@ export const CardWrapper = ({ cats }) => {
             email={cat.email}
             image={cat.image}
             favoured={cat.favoured}
+            updateFavourite={updateFavourite}
+            index={index}
           />
         );
       })}

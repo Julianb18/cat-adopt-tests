@@ -1,11 +1,23 @@
 import React from "react";
 
+import "./Filter.css";
+
 export const Filter = ({ filters, setFilters }) => {
   return (
     <div className="pet-filter-container">
       <div className="filter-container">
         <label htmlFor="favourite">Favourite</label>
-        <select name="favourite" id="favourite" className="form-select">
+        <select
+          name="favourite"
+          id="favourite"
+          className="form-select"
+          onChange={(e) => {
+            setFilters({
+              ...filters,
+              favoured: e.target.value,
+            });
+          }}
+        >
           <option value="any">Any</option>
           <option value="favoured">Favoured</option>
           <option value="not favoured">Not Favoured</option>

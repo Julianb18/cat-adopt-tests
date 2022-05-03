@@ -11,9 +11,11 @@ export const Pets = () => {
   const [filteredCats, setFilteredCats] = useState([]);
   const [filters, setFilters] = useState({
     gender: "any",
+    favoured: "any",
   });
 
-  //   console.log(filters);
+  console.log("CATS", cats);
+  console.log("FILTERED CATS====>", filteredCats);
   const fetchCats = async () => {
     const response = await axios.get("http://localhost:4000/cats");
 
@@ -33,6 +35,12 @@ export const Pets = () => {
         (cat) => cat.gender === filters.gender
       );
     }
+    if (filters.favoured !== "any") {
+      catsFiltered = catsFiltered.filter(
+        (cat) =>
+          cat.favoured === (filters.favoured === "favoured" ? true : false)
+      );
+    }
     setFilteredCats(catsFiltered);
   }, [filters]);
 
@@ -40,7 +48,7 @@ export const Pets = () => {
     <div className="container">
       <div className="app-container">
         <Filter filters={filters} setFilters={setFilters} />
-        <CardWrapper cats={filteredCats} />
+        <CardWrapper cats={filteredCats} setCats={setCats} />
       </div>
     </div>
   );
