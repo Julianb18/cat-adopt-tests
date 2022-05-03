@@ -1,14 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./CardWrapper.css";
 
 import { Card } from "../Card/Card";
+import { PetsContext } from "../Pets/Pets";
 
-export const CardWrapper = ({ cats, setCats }) => {
-  const updateFavourite = (index, favoured) => {
-    const updatedCats = [...cats];
-    updatedCats[index].favoured = favoured;
-    setCats(updatedCats);
-  };
+export const CardWrapper = () => {
+  const { cats } = useContext(PetsContext);
 
   return (
     <div className="pet-card-container">
@@ -21,7 +18,6 @@ export const CardWrapper = ({ cats, setCats }) => {
             email={cat.email}
             image={cat.image}
             favoured={cat.favoured}
-            updateFavourite={updateFavourite}
             index={index}
           />
         );
